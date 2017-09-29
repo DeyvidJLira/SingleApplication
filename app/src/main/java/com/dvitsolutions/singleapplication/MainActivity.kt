@@ -12,6 +12,9 @@ import android.graphics.PixelFormat
 import android.view.WindowManager
 import android.view.Gravity
 import android.widget.Toast
+import android.content.Intent
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,8 +25,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         preventStatusBarExpansion()
 
@@ -46,6 +47,14 @@ class MainActivity : AppCompatActivity() {
             return true
         } else {
             return super.dispatchKeyEvent(event)
+        }
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (!hasFocus) {
+            val closeDialog = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
+            sendBroadcast(closeDialog)
         }
     }
 
