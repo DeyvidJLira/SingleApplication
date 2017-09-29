@@ -9,7 +9,6 @@ import android.content.Context
 import android.util.Log
 import java.util.concurrent.TimeUnit
 
-
 /**
  * Created by Deyvid on 28/09/2017.
  */
@@ -65,7 +64,6 @@ class SingleService : Service() {
         }
 
     private fun restoreApp() {
-        // Restart activity
         val i = Intent(context, MainActivity::class.java)
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context!!.startActivity(i)
